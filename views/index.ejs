@@ -1,0 +1,31 @@
+<%- include('header') %>
+
+<div class="container">
+<h1>URL Shortner </h1>
+<form action="/shortUrls" method="post" class="my-4">
+    <label class="sr-only" for="fullUrl" ></label>
+    <input type="url" name="fullUrl" id="fullUrl" placeholder="URL" class="form-control col mr-2">
+    <button type="submit" class="btn btn-success">Shrink</button>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Full URL</th>
+                <th>Short URL</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% shortUrls.forEach(shortUrl => { %>
+                <tr>
+                <td><a href="<%= shortUrl.fullUrl %> "><%= shortUrl.fullUrl %></a></td>
+                <td><a href="<%= shortUrl.short %> "><%= shortUrl.short %></a></td>
+                <td><%= shortUrl.clicks %></td>
+            </tr>
+            <% }) %> 
+            
+        </tbody>
+    </table>
+</form>
+</div>
+<%- include('footer') %>
